@@ -27,7 +27,7 @@ jobs:
         with:
           author_name: test
           author_email: test@example.com
-          message: "Your commit message"
+          message: "Update all.csv"
           add: "*.csv"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
