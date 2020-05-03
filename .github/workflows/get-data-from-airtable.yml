@@ -1,8 +1,7 @@
 name: Get data from airtable every hour
 on:
-  push:
-    branches:
-      - master
+  schedule:
+    - cron: "45 * * * *"
 
 jobs:
   get-data:
@@ -10,16 +9,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Install Dependencies
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Install chrome and run
+        run: |
+          sudo apt-get -yqq update
+          sudo apt-get -yqq install chromium-browser
+          npm install
+          npm run start
         env:
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 'true'
-        run: npm install
-      - name: Test Code
-        uses: mujo-code/puppeteer-headful@master
-        env:
-          CI: 'true'
-        with:
-          args: cd public || npm run start
+        working-directory: public
       - name: Commit updates
         uses: EndBug/add-and-commit@v4
         with:

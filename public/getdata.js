@@ -16,9 +16,9 @@ async function updateFiles() {
     console.log(`${directory}, cleaned`)
 
     //download csv
-    const browser = await browser.launch({
-        executablePath: process.env.PUPPETEER_EXEC_PATH, // set by docker container
-        headless: false,
+    const browser = await puppeteer.launch({
+        executablePath: '/usr/bin/chromium-browser',
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
     })
     const page = await browser.newPage();
     await page._client.send('Page.setDownloadBehavior', { behavior: 'allow', downloadPath: directory });
