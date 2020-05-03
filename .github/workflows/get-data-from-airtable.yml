@@ -1,25 +1,31 @@
 name: Get data from airtable every hour
 on:
-  schedule:
-    - cron: '0 * * * *'
+  push:
+    branches:
+      - master
+
 jobs:
   get-data:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Setup Node
-        uses: actions/setup-node@v1
+      - name: Install Dependencies
+        env:
+          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 'true'
+        run: npm install
+      - name: Test Code
+        uses: mujo-code/puppeteer-headful@master
+        env:
+          CI: 'true'
         with:
-          node-version: 12
-      - name: Build
-        run: |
-          npm install
-          npm run start
+          args: cd public || npm run start
+      - name: Commit updates
+        uses: EndBug/add-and-commit@v4
         with:
-          FOLDER: public
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
-        with:
+          author_name: test
+          author_email: test@example.com
+          message: "Your commit message"
+          add: "*.csv"
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: master
