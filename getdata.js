@@ -16,7 +16,10 @@ async function updateFiles() {
     console.log(`${directory}, cleaned`)
 
     //download csv
-    const browser = await browser.launch({ args: ["--no-sandbox"]})
+    const browser = await puppeteer.launch({
+        executablePath: '/usr/bin/chromium-browser',
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+    })
     const page = await browser.newPage();
     await page._client.send('Page.setDownloadBehavior', { behavior: 'allow', downloadPath: directory });
     await page.goto('https://airtable.com/shrRBozfbknHIlpIm/tblO0CoQECxUILlN3/viw0qDsmDXN8PPGrQ?blocks=hide');
