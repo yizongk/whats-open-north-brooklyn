@@ -1,7 +1,7 @@
 name: Get data from airtable every hour
 on:
   schedule:
-    - cron: "10 * * * *"
+    - cron: "20 * * * *"
 
 jobs:
   get-data:
@@ -34,5 +34,6 @@ jobs:
           author_email: bot@example.com
           message: "Update Airtable"
           add: "*.csv"
+          ref: gh-pages 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
