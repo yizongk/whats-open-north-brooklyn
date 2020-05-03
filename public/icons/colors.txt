@@ -1,0 +1,14 @@
+'bike shops' light blue #508eba
+'hardware store': light blue #508eba
+'pet supplies'light blue #508eba
+'shipping services/post office': light blue #508eba
+
+'grocery store' gren 1aa139
+'grocery store - supermarket' green
+'bar' --> aqua 1eb0a9
+'restaurant': blue 2637cc
+
+'health and wellness' dark red cc1619
+'pharmacy':  light red f0575e
+
+'laundromat' yellow  ffc01f

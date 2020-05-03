@@ -1,0 +1,52 @@
+{
+  "site_header": {
+    "title": "在新冠状病毒爆发时，北布鲁克林的哪些商人仍在运营?",
+    "subtitle": "在北布鲁克林经营的基本商人名单"
+  },
+  "filters": {
+    "categories": {
+      "title": "业务类",
+      "grocery": "超级市场",
+      "health": "卫生保健",
+      "laundromat": "洗衣店",
+      "restaurants": "餐厅",
+      "dessert": "甜点",
+      "retail": "零售",
+      "shops_and_services": "其他商业"
+    },
+    "options": {
+      "title": "筛选",
+      "any": "全部",
+      "takeout": "外卖",
+      "delivery": "外送",
+      "shipping": "邮寄"
+    },
+    "subcategories": "子类别"
+  },
+  "search": {
+    "search_by_name": "按名称搜索",
+    "search_button": "搜索",
+    "no_addresses_found_error": "没有查到商业",
+    "search_placeholder": "这里按名称搜索"
+  },
+  "loading": "Loading layers...",
+  "details": {
+    "website": "网站",
+    "takeout": "外卖",
+    "delivery": "外送",
+    "shipping": "邮寄",
+    "buy_a_giftcard": "买个礼品卡来支持这个商户",
+    "contribute_to_fundraiser": "参加啊这个商户的筹款活动",
+    "last_updated": "最后更新: {lastUpdated}",
+    "source_link":
+      "Source: 来源 <a href=\"{url}\" target=\"_blank\">按这里</a>",
+    "click_on_a_point": "点击查看更多详情",
+    "notes": "提醒",
+    "address": "地址",
+    "open_time": "营业",
+    "close_time": "关门"
+  },
+  "map":{
+    "top": "上"
+  }
+}

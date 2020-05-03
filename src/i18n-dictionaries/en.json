@@ -1,0 +1,44 @@
+{
+  "site_header": {
+    "title": "What's Open In North Brooklyn During COVID-19?",
+    "subtitle": "A directory of essential businesses that are open in North Brooklyn during COVID-19."
+  },
+  "filters": {
+    "categories": "Categories",
+    "options": {
+      "title": "Options",
+      "any": "Any",
+      "takeout": "Takeout",
+      "delivery": "Delivery",
+      "shipping": "Shipping"
+    },
+    "subcategories": "Sub-Categories"
+  },
+  "search": {
+    "search_by_name": "Search by name",
+    "search_button": "Search",
+    "no_addresses_found_error": "No businesses found",
+    "search_placeholder": "Search by name here"
+  },
+  "loading": "Loading layers...",
+  "details": {
+    "website": "Website",
+    "takeout": "Takeout",
+    "delivery": "Delivery",
+    "shipping": "Shipping",
+    "buy_a_giftcard": "Buy a GIFTCARD to support this business!",
+    "contribute_to_fundraiser":"Contribute to this business's FUNDRAISER!",
+    "last_updated": "Last Updated: {lastUpdated}",
+    "source_link": "Source: <a href=\"{url}\" target=\"_blank\">Click here</a>",
+    "click_on_a_point": "Click on a point for more details",
+    "notes": "Notes",
+    "giftcardfundraiser": "Giftcard & Fundraiser",
+    "specialoffers": "Special Offers",
+    "address": "Address",
+    "open_time": "Open time",
+    "close_time": "Close time"
+  },
+  "map":{
+    "top": "Top"
+  }
+}

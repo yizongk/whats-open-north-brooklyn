@@ -1,0 +1,53 @@
+{
+  "site_header": {
+    "title": "¿Qué está abierto North Brooklyn durante COVID-19?",
+    "subtitle": "Un directorio de negocios esenciales que están abiertos North Brooklyn durante COVID-19."
+  },
+  "filters": {
+    "categories": {
+      "title": "Categorias",
+      "grocery": "Comestibles",
+      "health": "Salud",
+      "laundromat": "Lavandería",
+      "restaurants": "Restaurantes",
+      "dessert": "Postre",
+      "retail": "Tiendas Locales",
+      "shops_and_services": "Tiendas y servicios"
+    },
+    "options": {
+      "title": "Opciones",
+      "any": "Cualquier",
+      "takeout": "Comida para llevar",
+      "delivery": "Entrega",
+      "shipping": "Envío"
+    },
+    "subcategories": "Subcategorias"
+  },
+  "search": {
+    "search_by_name": "Buscar por nombre",
+    "search_button": "Buscar",
+    "no_addresses_found_error": "No se encontraron negocios",
+    "search_placeholder": "Busca por nombre aquí"
+  },
+  "loading": "Cargando capas...",
+  "details": {
+    "website": "Sitio web",
+    "takeout": "Comida para llevar",
+    "delivery": "Entrega",
+    "shipping": "Envío",
+    "buy_a_giftcard": "¡Compre una TARJETA DE REGALO para apoyar este negocio!",
+    "contribute_to_fundraiser":"¡Contribuya a la RECAUDACIÓN DE FONDOS de este negocio!",
+    "last_updated": "última actualización: {lastUpdated}",
+    "source_link": "Source: <a href=\"{url}\" target=\"_blank\">haga clic aquí</a>",
+    "click_on_a_point": "Haga clic en un punto para más detalles.",
+    "notes": "Notas",
+    "giftcardfundraiser": "Tarjeta de regalo & Recaudación de fondos",
+    "specialoffers": "Ofertas especiales",
+    "address": "Dirección",
+    "open_time": "Tiempo abierto",
+    "close_time": "Hora de cierre"
+  },
+  "map":{
+    "top": "Cabeza"
+  }
+}
