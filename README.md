@@ -24,9 +24,16 @@ Icons from [Maps Icons Collection](https://mapicons.mapsmarker.com).
 
 ## Setup
 
-Install node.js packages
-
+Download data
 ```bash
+cd public
+npm install 
+npm run start
+```
+
+Download the svelte app
+```bash
+cd ..
 npm install
 ```
 

@@ -35,7 +35,7 @@ async function updateFiles() {
 
     console.log(`download clicked`)
 
-    await page.waitFor(6000 * 2) // wait two minutes
+    await page.waitFor(6000 * 3) // wait three minutes
     await browser.close();
 
     //check for csv

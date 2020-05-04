@@ -1,5 +1,8 @@
-name: Get data from airtable every hour
+name: Get data from airtable every hour or update to master
 on:
+  push:
+    branches:
+      - master
   schedule:
     - cron: "20 * * * *"
 
