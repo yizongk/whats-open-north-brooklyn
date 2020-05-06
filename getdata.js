@@ -46,7 +46,7 @@ async function updateFiles() {
         const filePath = path.join(directory, file)
         const stat = await fsPromises.lstat(filePath);
 
-        if (stat.isFile()) sPromises.unlink(filePath)
+        if (stat.isFile()) fsPromises.unlink(filePath)
         if (stat.isDirectory()) await fsPromises.rmdir(filePath, {recursive: true})
     }
 
