@@ -1,5 +1,7 @@
 <footer>
-    <p class="is-6">Footer info</p>
+    <p class="is-6">Updated frequently by <strong><a href="http://northbrooklynneighbors.org/">North Brooklyn
+        Neighbors</a></strong> and <strong>North Brooklyn Mutual Aid</strong>. To add or update info fill out <a
+            href="https://airtable.com/shrGc92OIWFQoSf5X" target="_blank">this form</a>.</p>
     <figure>
         <img
                 class="logo"
