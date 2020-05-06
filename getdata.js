@@ -1,51 +1,73 @@
 const fs = require('fs');
+const fsPromises = require('fs').promises
 const path = require('path');
 const puppeteer = require('puppeteer');
 
-const directory = __dirname + '/data';
+async function downloadCSV(page, id, parentDir, url) {
+    //create temp folder for download
+    const tempDir = parentDir + `/temp_${id}`
 
-async function updateFiles() {
-    //clean folder
-    const files = fs.readdirSync(directory)
-    for (const file of files) {
-        fs.unlink(path.join(directory, file), err => {
-            if (err) throw err;
-        });
-    }
+    fs.mkdirSync(tempDir)
 
-    console.log(`${directory}, cleaned`)
-
-    //download csv
-    const browser = await puppeteer.launch({
-        executablePath: '/usr/bin/chromium-browser',
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
-    })
-    const page = await browser.newPage();
-    await page._client.send('Page.setDownloadBehavior', { behavior: 'allow', downloadPath: directory });
-    await page.goto('https://airtable.com/shrRBozfbknHIlpIm/tblO0CoQECxUILlN3/viw0qDsmDXN8PPGrQ?blocks=hide');
+    await page._client.send('Page.setDownloadBehavior', {behavior: 'allow', downloadPath: tempDir});
+    await page.goto(url);
     await page.waitFor('.viewMenuPopover')
 
     const hrefElement = await page.$('.viewMenuButton[tabindex="0"]');
     await hrefElement.click();
-    await page.screenshot({ path: path.join(directory, 'example.png') });
+
     await page.waitFor(500)
 
     const downloadElement = await page.$('ul.dark li[tabindex="0"]')
     await downloadElement.click()
 
-    console.log(`download clicked`)
+    console.log(`getting data from ${url}`)
 
-    await page.waitFor(60000 * 2) // wait two minutes
+    return tempDir
+}
+
+async function moveCSV(sourceDir, targetDir, targetName) {
+    const files_downloaded = await fsPromises.readdir(sourceDir)
+    const csv_file = files_downloaded.find(file => file.includes('.csv'))
+    if (csv_file) {
+        //move
+        await fsPromises.rename(path.join(sourceDir, csv_file), path.join(targetDir, targetName))
+    }
+    //clean up
+    await fsPromises.rmdir(sourceDir, {recursive: true})
+}
+
+const directory = __dirname + '/data';
+
+async function updateFiles() {
+    //clean data folder
+    const files = fs.readdirSync(directory)
+    for (const file of files) {
+        const filePath = path.join(directory, file)
+        const stat = await fsPromises.lstat(filePath);
+
+        if (stat.isFile()) sPromises.unlink(filePath)
+        if (stat.isDirectory()) await fsPromises.rmdir(filePath, {recursive: true})
+    }
+
+    //download csv
+    const browser = await puppeteer.launch({
+        executablePath: '/usr/bin/chromium-browser', //disable when running on local machine
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+    })
+    const page1 = await browser.newPage();
+    const page2 = await browser.newPage();
+
+    const allDir = await downloadCSV(page1, 0, directory,
+        'https://airtable.com/shrRBozfbknHIlpIm/tblO0CoQECxUILlN3/viw0qDsmDXN8PPGrQ?blocks=hide')
+    const foodDir = await downloadCSV(page2, 1, directory,
+        'https://airtable.com/shrRBozfbknHIlpIm/tblvgTvcHLj5r55CH/viwGtBbRW0Elu9aYf?blocks=hide')
+
+    await page1.waitFor(60000 * .5)
     await browser.close();
 
-    //check for csv
-    const files_downloaded = fs.readdirSync(directory)
-
-    console.log(`files downloaded ${files_downloaded}`)
-    const csv_file = files_downloaded.find(file => file.includes('.csv'))
-
-    //rename
-    await fs.renameSync(path.join(directory, csv_file), path.join(directory, 'all.csv'))
+    await moveCSV(allDir, directory, 'all.csv')
+    await moveCSV(foodDir, directory, 'food.csv')
 }
 
 updateFiles()
