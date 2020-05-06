@@ -8,12 +8,27 @@
     import {getValidUrl, getValidInstagram} from '../utils/getValidUrl'
     import {formatPhoneNumber} from '../utils/textFormating'
     import LastUpdated from "./details/LastUpdated.svelte";
+
+    let subCategories = []
+
+    $ : {
+        if($details){
+            subCategories = $details['Sub-Category'].split(',').filter(tag => tag.trim())
+        }
+    }
 </script>
 
 {#if $details}
     <div class="content has-background-ter">
         <h4 class="is-4">{$details.Name}</h4>
         <p><strong>{$details.Category}</strong></p>
+
+
+        <div class="tags are-small">
+            {#each subCategories as tag}
+                <span class="tag">{tag}</span>
+            {/each}
+        </div>
         <hr/>
 
         <HideWhenEmpty value={$details.Address}>
@@ -34,16 +49,14 @@
         </div>
 
         <hr/>
-        <HideWhenEmpty show={$details.Hours}>
-            <h5 class="is-5">Hours</h5>
-            <p>{$details['Hours']}</p>
-        </HideWhenEmpty>
 
-        <HideWhenEmpty show={$details['Special Accommodation Hours']}>
-            <h5 class="is-5">Special Accommodation Hours</h5>
-            <p>{$details['Special Accommodation Hours']}</p>
-        </HideWhenEmpty>
+        <MarkdownField title="Hours" content={$details['Hours']}/>
 
+        <MarkdownField title="Special Accommodation Hours" content={$details['Special Accommodation Hours']}/>
+
+        <MarkdownField title={$_('details.notes')} content={$details['Notes']}/>
+
+        <hr>
 
         <div class="field is-grouped is-grouped-multiline">
             <div class="control">
@@ -67,7 +80,7 @@
 
         </div>
 
-        <MarkdownField title={$_('details.notes')} content={$details['Notes']}/>
+        <MarkdownField title="Delivery/Pickup Notes" content={$details['Delivery/Pickup Notes']}/>
 
         {#if $details['Donate']  }
             <hr>
@@ -76,7 +89,7 @@
 
         <hr>
 
-        <LastUpdated lastUpdated={$details['Last Updated']} />
+        <LastUpdated lastUpdated={$details['Last Updated']}/>
 
     </div>
 {:else}

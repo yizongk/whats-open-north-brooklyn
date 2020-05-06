@@ -23,6 +23,10 @@
             selectedColor: '#1aa139',
             color: 'rgba(26,161,57,0.58)'
         },
+        'bakery': {
+            selectedColor: '#1aa139',
+            color: 'rgba(26,161,57,0.58)'
+        },
         'health and wellness': {
             selectedColor: '#cc1619',
             color: 'rgba(204,22,25,0.51)'
@@ -48,6 +52,10 @@
             color: 'rgba(80,142,186,0.71)'
         },
         'shipping services/post office': {
+            selectedColor: '#508eba',
+            color: 'rgba(80,142,186,0.71)'
+        },
+        'liquor store/distillery': {
             selectedColor: '#508eba',
             color: 'rgba(80,142,186,0.71)'
         },

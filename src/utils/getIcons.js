@@ -98,6 +98,16 @@ function iconLookup(overall, sub){
                     iconUrl: './icons/laundromat.png',
                     ...defaultIconOptions
                 })
+            case 'liquor store/distillery':
+                return L.icon({
+                    iconUrl: './icons/liquor.png',
+                    ...defaultIconOptions
+                })
+            case 'bakery':
+                return L.icon({
+                    iconUrl: './icons/bread.png',
+                    ...defaultIconOptions
+                })
             default:
                 return L.icon({
                     iconUrl: './icons/blank.png',
