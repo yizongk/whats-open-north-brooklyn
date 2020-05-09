@@ -22,11 +22,11 @@
 
     function toggleCategoryItem(selectedItem) {
         //select one category in the “Categories” section at a time
-        // const updatedCategories = categories.map(item => {
-        //     selectedItem.name === item.name ? item.selected = true : item.selected = false;
-        //     return item;
-        // })
-        selectedItem.selected = !selectedItem.selected
+        const updatedCategories = categories.map(item => {
+            selectedItem.name === item.name ? item.selected = true : item.selected = false;
+            return item;
+        })
+        //selectedItem.selected = !selectedItem.selected
         dispatch('update', categories)
     }
 
@@ -45,8 +45,7 @@
             border-left: 7px solid ${getCustomColor(item.name, 'selectedColor')};
         `
     }
-
-
+    
 </script>
 
 

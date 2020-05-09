@@ -29,15 +29,14 @@
                 <span class="tag">{tag}</span>
             {/each}
         </div>
-        <hr/>
 
         <HideWhenEmpty value={$details.Address}>
-            <p><strong>{$_('details.address')}:</strong> {$details.Address}</p>
+            <p>{$details.Address}</p>
         </HideWhenEmpty>
 
 
         <HideWhenEmpty value={$details.Phone}>
-            <p><strong>#:</strong> <a href="tel:{formatPhoneNumber($details.Phone)}"
+            <p><a href="tel:{formatPhoneNumber($details.Phone)}"
                                       class="">{formatPhoneNumber($details.Phone)}</a></p>
         </HideWhenEmpty>
 
@@ -61,7 +60,7 @@
         <div class="field is-grouped is-grouped-multiline">
             <div class="control">
                 <div class="tags has-addons">
-                    <span class="tag">{$_('details.takeout')}</span>
+                    <span class="tag"><strong>{$_('details.takeout')}</strong></span>
                     <span class="tag {$details['Pickup Offered'].toLowerCase().includes('yes') ? 'is-success' : 'is-white'}">
                         {$details['Pickup Offered']}
                     </span>
@@ -71,7 +70,7 @@
 
             <div class="control">
                 <div class="tags has-addons">
-                    <span class="tag">{$_('details.delivery')}</span>
+                    <span class="tag"><strong>{$_('details.delivery')}</strong></span>
                     <span class="tag {$details['Delivery Offered'].toLowerCase().includes('yes') ? 'is-success' : 'is-white'}">
                         {$details['Delivery Offered']}
                     </span>
