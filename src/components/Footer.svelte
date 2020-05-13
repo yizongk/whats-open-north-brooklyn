@@ -1,7 +1,7 @@
 <footer>
     <p class="is-6">We are updating these listings regularly, but please check their Instagram or website or call for
         the most current information. Maintained by <strong><a href="http://northbrooklynneighbors.org/">North Brooklyn
-            Neighbors</a></strong> and <strong>North Brooklyn Mutual Aid</strong>. To add or update info fill out <a
+        Neighbors</a></strong> and <strong><a href="http://northbrooklynmutualaid.org/">North Brooklyn Mutual Aid</a></strong>. To add or update info fill out <a
                 href="https://airtable.com/shrGc92OIWFQoSf5X" target="_blank">this form</a>.</p>
     <figure>
         <img
