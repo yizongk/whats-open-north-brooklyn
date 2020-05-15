@@ -21,7 +21,7 @@ async function downloadCSV(page, id, parentDir, url) {
     const downloadElement = await page.$('ul.dark li[tabindex="0"]')
     await downloadElement.click()
 
-    console.log(`getting data from ${url}`)
+    console.log(` \t\tgetting data from ${url}`)
 
     return tempDir
 }
@@ -37,10 +37,9 @@ async function moveCSV(sourceDir, targetDir, targetName) {
     await fsPromises.rmdir(sourceDir, {recursive: true})
 }
 
-const directory = __dirname + '/data';
-
-async function updateFiles() {
+async function updateFiles(directory) {
     //clean data folder
+    console.log(' \tDownloading files to dir: '+directory)
     const files = fs.readdirSync(directory)
     for (const file of files) {
         const filePath = path.join(directory, file)
@@ -58,8 +57,10 @@ async function updateFiles() {
     const page1 = await browser.newPage();
     const page2 = await browser.newPage();
 
+    console.log(' \t * Downloading all.csv')
     const allDir = await downloadCSV(page1, 0, directory,
         'https://airtable.com/shrRBozfbknHIlpIm/tblO0CoQECxUILlN3/viw0qDsmDXN8PPGrQ?blocks=hide')
+    console.log(' \t * Downloading food.csv')
     const foodDir = await downloadCSV(page2, 1, directory,
         'https://airtable.com/shrRBozfbknHIlpIm/tblvgTvcHLj5r55CH/viwGtBbRW0Elu9aYf?blocks=hide')
 
@@ -70,4 +71,28 @@ async function updateFiles() {
     await moveCSV(foodDir, directory, 'food.csv')
 }
 
-updateFiles()
+function setupdirectory(dir) {
+    // Create the folder data if it doens't exist
+    if (!fs.existsSync(dir)) {
+        try {
+            fs.mkdirSync(dir);
+            console.log(' \tCreated ' + dir)
+        } catch (e) {
+            throw error
+        }
+    } else {
+        console.log(' \tdata dir already exists, skipping creation')
+    }
+}
+
+function main() {
+    const directory = __dirname + '/data';
+
+    console.log(' :: Setting up directory structure')
+    setupdirectory(directory)
+
+    console.log(' :: Updating airtable data files, overwitting existing files')
+    updateFiles(directory)
+}
+
+main()
