@@ -30,6 +30,15 @@ cd public
 npm install 
 npm run start
 ```
+_Note: If you are running Download Data instruction on a dev machine, comment out the following line, otherwise you will run into, Error: Failed to launch the browser process! spawn /usr/bin/chromium-browser ENOENT_
+```
+async function updateFiles(directory) {
+    ...
+    executablePath: '/usr/bin/chromium-browser' // Comment this line out
+    ...
+}
+```
+
 
 Download the svelte app
 ```bash
